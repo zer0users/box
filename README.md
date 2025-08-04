@@ -4,9 +4,9 @@
 
 📦 Requirements:
 
-QEMU System x86 64
-VirtIO
-Five Programming Language (https://github.com/zer0users/five)
+QEMU System x86 64,
+VirtIO,
+Five Programming Language (https://github.com/zer0users/five),
 Lua
 
 How to **compile**:
