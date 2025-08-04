@@ -1,0 +1,13 @@
+project.name = "Box"
+project.platform = "linux"
+require "shell"
+shell.set = "lua"
+require "files"
+
+files.add("file", "alpine.qcow2", "alpine.qcow2")
+
+
+define class "shell"
+    function "main"
+
+os.execute('qemu-system-x86_64 -m 2G -smp 2 -cpu host -enable-kvm -drive file=alpine.qcow2,format=qcow2,if=virtio -vga virtio -netdev user,id=net0,hostfwd=tcp::2222-:22 -device virtio-net-pci,netdev=net0 -device usb-tablet -usb -rtc base=utc,clock=host -full-screen')
