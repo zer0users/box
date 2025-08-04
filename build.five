@@ -1,0 +1,12 @@
+project.name = "Box"
+project.platform = "linux"
+require "shell"
+shell.set = "lua"
+require "files"
+files.add("file", "alpine.qcow2", "disk.qcow2")
+
+define class "shell"
+    function "main"
+
+print('Loading QEMU with love..')
+os.execute("qemu-system-x86_64 -enable-kvm -m 2048 -smp 2 -cpu host -drive file=disk.qcow2,format=qcow2,if=virtio -device virtio-vga -device qemu-xhci,id=usb,bus=pci.0,addr=0x6 -device usb-tablet,bus=usb.0,port=1 -netdev user,id=net0,hostfwd=tcp::2222-:22 -device e1000,netdev=net0 -display gtk,gl=on,-full-screen")
