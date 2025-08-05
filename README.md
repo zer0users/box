@@ -6,11 +6,11 @@
 
 QEMU System x86 64,
 VirtIO,
-Five Programming Language (https://github.com/zer0users/five),
+cx Programming Language (https://github.com/zer0users/cx),
 Lua
 
 How to **compile**:
 
 ```bash
-five compile build.five
+cx build
 ```
