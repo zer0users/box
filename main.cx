@@ -1,0 +1,20 @@
+program "Box"
+
+#get "shell"
+#get "files"
+#get "cx"
+#from "cx" get "cx-project"
+#from "cx" get "cx-app"
+
+define class "Box"
+    files.add("file", "alpine.qcow2", "alpine.qcow2")
+
+    cx.project.name = "Box"
+    cx.project.platform = "linux"
+    cx.app.shell = "lua"
+    cx.app.class = "Shell"
+finish
+
+define class "Shell"
+    os.execute('qemu-system-x86_64 -m 2G -smp 2 -cpu host -enable-kvm -drive file=alpine.qcow2,format=qcow2,if=virtio -vga virtio -netdev user,id=net0,hostfwd=tcp::2222-:22 -device virtio-net-pci,netdev=net0 -device usb-tablet -usb -rtc base=utc,clock=host -full-screen')
+finish
