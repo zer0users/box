@@ -11,6 +11,10 @@ Lua
 
 How to **compile**:
 
+1. Add an **disk.qcow2** on the project folder.
+
+2. For compile, execute on the project folder:
+
 ```bash
 cx build
 ```
